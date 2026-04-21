@@ -1,15 +1,15 @@
+import { useEffect, useState } from "react";
 import ClubCard from "../components/ClubCard";
 
 function Clubs() {
-  const clubs = [
-    { id: 1, name: "Posta Padel", location: "Carlos Tejedor" },
-    { id: 2, name: "Club Argentino", location: "Carlos Tejedor" },
-    { id: 3, name: "Club Los Vazcos", location: "Carlos Tejedor" },
-    { id: 4, name: "Club Gorra de Cuero", location: "Carlos Tejedor" },
-    { id: 5, name: "Club Huracan", location: "Carlos Tejedor" },
+  const [clubs, setClubs] = useState([]);
 
-
-  ];
+  useEffect(() => {
+    fetch("http://localhost:3000/clubs")
+      .then((res) => res.json())
+      .then((data) => setClubs(data))
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <div>

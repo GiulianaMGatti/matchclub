@@ -18,3 +18,6 @@ app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 
+const clubsRoutes = require("./routes/clubs.routes");
+
+app.use("/clubs", clubsRoutes);
