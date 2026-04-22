@@ -19,6 +19,7 @@ function Clubs() {
         {clubs.map((club) => (
           <ClubCard
             key={club.id}
+            id={club.id}
             name={club.name}
             location={club.location}
           />
