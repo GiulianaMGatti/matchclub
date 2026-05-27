@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ClubCard from "../components/ClubCard";
+import ClubCard from "../../components/ClubCard";
 
 function Clubs() {
   const [clubs, setClubs] = useState([]);
