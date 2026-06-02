@@ -8,8 +8,11 @@ import Clubs from "../pages/public/Clubs";
 import ClubDetail from "../pages/public/ClubDetail";
 import Booking from "../pages/public/Booking";
 import BookingConfirm from "../pages/public/BookingConfirm";
+import Login from "../pages/public/Login";
 
 import Dashboard from "../pages/admin/Dashboard";
+
+import ProtectedRoute from "../components/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -36,11 +39,19 @@ const router = createBrowserRouter([
         path: "booking-confirm",
         element: <BookingConfirm />,
       },
+      {
+        path: "Login",
+        element: <Login />,
+      },
     ],
   },
   {
     path: "/admin",
-    element: <AdminLayout />,
+    element: (
+      <ProtectedRoute>
+        <AdminLayout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         index: true,
