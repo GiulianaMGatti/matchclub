@@ -13,6 +13,7 @@ import Login from "../pages/public/Login";
 import Dashboard from "../pages/admin/Dashboard";
 
 import ProtectedRoute from "../components/ProtectedRoute";
+import Reservations from "../pages/admin/Reservations";
 
 const router = createBrowserRouter([
   {
@@ -45,20 +46,24 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/admin",
-    element: (
-      <ProtectedRoute>
-        <AdminLayout />
-      </ProtectedRoute>
-    ),
-    children: [
-      {
-        index: true,
-        element: <Dashboard />,
-      },
-    ],
-  },
+{
+  path: "/admin",
+  element: (
+    <ProtectedRoute>
+      <AdminLayout />
+    </ProtectedRoute>
+  ),
+  children: [
+    {
+      index: true,
+      element: <Dashboard />,
+    },
+    {
+      path: "reservas",
+      element: <Reservations />,
+    },
+  ],
+},
 ]);
 
 export default router;
