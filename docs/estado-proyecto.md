@@ -12,7 +12,7 @@
 
 # Repositorio
 
-GitHub:
+**GitHub:**
 https://github.com/GiulianaMGatti/matchclub
 
 ---
@@ -21,11 +21,11 @@ https://github.com/GiulianaMGatti/matchclub
 
 ## main
 
-Versión estable para entrega final.
+Versión estable destinada a la entrega final.
 
 ## develop
 
-Rama principal de desarrollo e integración.
+Rama principal de integración y desarrollo.
 
 ## feature/*
 
@@ -39,11 +39,11 @@ Ejemplos:
 
 ---
 
-# Estado Actual
+# Estado Actual del Proyecto
 
 ## Frontend
 
-Implementado:
+### Arquitectura implementada
 
 * React + Vite configurado
 * Tailwind CSS configurado
@@ -56,14 +56,56 @@ Implementado:
 * Uso de `Outlet`
 * Separación de páginas:
 
-  * pages/public
-  * pages/admin
-* Navbar funcional
-* Home funcional
+  * `pages/public`
+  * `pages/admin`
+* Navbar dinámica
+* Navegación interna funcional
+
+### Páginas públicas implementadas
+
+* Home
 * Listado de clubes
 * Detalle de club
 * Flujo inicial de reserva
-* Integración frontend-backend mediante fetch
+* Login
+
+### Autenticación implementada
+
+* Context API
+* AuthProvider
+* Login mock
+* Persistencia de sesión mediante Local Storage
+* Protected Routes
+* Logout funcional
+* Acceso controlado al panel administrativo
+
+### Panel Administrativo
+
+#### Dashboard
+
+Implementado:
+
+* KPIs de reservas
+* Indicadores visuales
+* Listado de últimas reservas
+
+#### Gestión de Reservas
+
+Implementado:
+
+* Tabla de reservas
+* Estados visuales mediante badges de colores
+* Estado de pago
+* Acciones iniciales (Ver / Cancelar)
+* Sidebar administrativa
+
+### Integración Frontend-Backend
+
+Implementado:
+
+* Consumo de API mediante Fetch
+* Comunicación con backend Express
+* Obtención de listado de clubes
 
 ---
 
@@ -71,64 +113,98 @@ Implementado:
 
 Implementado:
 
-* Express configurado
+* Servidor Express configurado
 * Endpoint `/clubs`
-* Comunicación frontend-backend funcionando
-* Respuesta JSON para listado de clubes
+* Respuesta JSON
+* Comunicación Frontend ↔ Backend funcional
 
 ---
 
 # Feedback del Profesor
 
-Se reorganizó la arquitectura para:
+Se realizó una reorganización de la arquitectura siguiendo las recomendaciones recibidas:
 
-* separar páginas públicas y administrativas
-* utilizar layouts independientes
-* utilizar `Outlet`
-* centralizar el enrutamiento
+* Separación entre páginas públicas y administrativas
+* Implementación de layouts independientes
+* Uso de Outlet para renderizado de rutas hijas
+* Centralización del sistema de rutas
+* Mejor organización para futuras validaciones y control de acceso
 
-Implementado correctamente.
+Estado: **Implementado correctamente**
 
 ---
 
-# Próximas tareas
+# Trabajo por Integrante
 
 ## Giuli
 
-* Login
+Implementado:
+
+* Arquitectura React
+* React Router
 * Context API
+* Login
 * Protected Routes
-* Acceso controlado al panel admin
+* Dashboard administrativo
+* Gestión de reservas
+* Integración Frontend-Backend
 
 ## Martín
 
+En desarrollo:
+
 * UX/UI
 * Mejoras visuales
-* Responsive
+* Responsive Design
 * Adaptación al diseño de Figma
 
 ---
 
-# Pendientes futuros
+# Próximas Etapas
 
-* Autenticación real
-* JWT
-* Base de datos
-* Reservas reales
+## Frontend
+
+* Gestión de clubes desde panel administrativo
 * Gestión de usuarios
-* Panel administrativo completo
-* Pasarela de pagos
-* Notificaciones
+* Formularios administrativos
+* Mejoras visuales
+* Responsive Design completo
+
+## Backend
+
+* Reservas persistentes
+* CRUD de clubes
+* CRUD de reservas
+* Gestión de usuarios
+
+## Base de Datos
+
+Pendiente de definición:
+
+* MySQL o Supabase
 
 ---
 
-# Última actualización
+# Funcionalidades Futuras
 
-- Implementación de Context API para autenticación.
-- Login mock funcional.
-- Protected Routes.
-- Navbar dinámica.
-- Dashboard administrativo.
-- Módulo de reservas con indicadores KPI.
+* Autenticación real
+* JWT
+* Roles y permisos
+* Gestión completa de usuarios
+* Reservas reales
+* Pasarela de pagos
+* Notificaciones por correo electrónico
+* Recordatorios automáticos por WhatsApp
+* Historial de reservas por usuario
+* Estadísticas y métricas de uso
 
-Proyecto estable y funcionando.
+---
+
+# Estado General
+
+✅ Proyecto estable y funcional.
+
+Actualmente se encuentra implementada la arquitectura principal del frontend, autenticación simulada, panel administrativo básico y comunicación inicial con backend.
+
+La siguiente etapa consiste en ampliar las funcionalidades administrativas y comenzar la persistencia de datos.
+
