@@ -7,16 +7,67 @@ function Booking() {
   const navigate = useNavigate();
   const { addReservation } = useReservations();
 
-  const clubName = `Club ${id}`;
+  const clubs = [
+    {
+      id: 1,
+      name: "Posta Padel",
+      location: "Carlos Tejedor",
+      sports: ["Pádel"],
+    },
+    {
+      id: 2,
+      name: "Club Argentino",
+      location: "Carlos Tejedor",
+      sports: ["Fútbol", "Padel"],
+    },
+    {
+      id: 3,
+      name: "Club Los Vascos",
+      location: "Carlos Tejedor",
+      sports: ["Tenis", "Pelota Paleta"],
+    },
+    {
+      id: 4,
+      name: "Club Gorra de Cuero",
+      location: "Carlos Tejedor",
+      sports: ["Fútbol", "Padel"],
+    },
+    {
+      id: 5,
+      name: "Club Huracan",
+      location: "Carlos Tejedor",
+      sports: ["Fútbol", "Padel", "Hockey"],
+    },
+  ];
 
-  const sports = ["Pádel", "Tenis", "Fútbol", "Vóley"];
   const dates = ["22/06/2026", "23/06/2026", "24/06/2026"];
   const times = ["18:00", "19:00", "20:00", "21:00"];
+
+  const club = clubs.find((club) => club.id === Number(id));
 
   const [selectedSport, setSelectedSport] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
 
+  if (!club) {
+    return (
+      <div className="max-w-3xl mx-auto bg-white rounded-xl shadow p-6 text-slate-900">
+        <h1 className="text-2xl font-bold mb-2">Club no encontrado</h1>
+        <p className="text-slate-500">
+          No pudimos encontrar la información del club seleccionado.
+        </p>
+        <button
+          onClick={() => navigate("/clubs")}
+          className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+        >
+          Volver a clubes
+        </button>
+      </div>
+    );
+  }
+
+  const clubName = club.name;
+  const sports = club.sports;
   const isFormComplete = selectedSport && selectedDate && selectedTime;
 
   const handleConfirmReservation = () => {
@@ -37,7 +88,8 @@ function Booking() {
       <h1 className="text-2xl font-bold mb-2">Reservar turno</h1>
 
       <p className="text-slate-500 mb-6">
-        Completá los datos para confirmar tu reserva.
+        Completá los datos para confirmar tu reserva en{" "}
+        <strong>{clubName}</strong>.
       </p>
 
       <div className="space-y-6">
@@ -48,6 +100,7 @@ function Booking() {
             {sports.map((sport) => (
               <button
                 key={sport}
+                type="button"
                 onClick={() => setSelectedSport(sport)}
                 className={`px-4 py-2 rounded-lg border ${
                   selectedSport === sport
@@ -68,6 +121,7 @@ function Booking() {
             {dates.map((date) => (
               <button
                 key={date}
+                type="button"
                 onClick={() => setSelectedDate(date)}
                 className={`px-4 py-2 rounded-lg border ${
                   selectedDate === date
@@ -88,6 +142,7 @@ function Booking() {
             {times.map((time) => (
               <button
                 key={time}
+                type="button"
                 onClick={() => setSelectedTime(time)}
                 className={`px-4 py-2 rounded-lg border ${
                   selectedTime === time
@@ -110,6 +165,7 @@ function Booking() {
         </div>
 
         <button
+          type="button"
           onClick={handleConfirmReservation}
           disabled={!isFormComplete}
           className={`w-full py-3 rounded-lg text-white ${
