@@ -3,12 +3,51 @@ import { Link, useParams } from "react-router-dom";
 function ClubDetail() {
   const { id } = useParams();
 
-  const club = {
-    id,
-    name: "Club Deportivo Norte",
-    location: "Buenos Aires",
-    sports: ["Pádel", "Tenis", "Vóley"],
-  };
+  const clubs = [
+    {
+      id: 1,
+      name: "Posta Padel",
+      location: "Carlos Tejedor",
+      sports: ["Pádel"],
+    },
+    {
+      id: 2,
+      name: "Club Argentino",
+      location: "Carlos Tejedor",
+      sports: ["Fútbol", "Padel"],
+    },
+    {
+      id: 3,
+      name: "Club Los Vascos",
+      location: "Carlos Tejedor",
+      sports: ["Tenis", "Pelota Paleta"],
+    },
+    {
+      id: 4,
+      name: "Club Gorra de Cuero",
+      location: "Carlos Tejedor",
+      sports: ["Fútbol", "Padel"],
+    },
+    {
+      id: 5,
+      name: "Club Huracan",
+      location: "Carlos Tejedor",
+      sports: ["Fútbol", "Padel", "Hockey"],
+    },
+  ];
+
+  const club = clubs.find((club) => club.id === Number(id));
+
+  if (!club) {
+    return (
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-2xl font-bold">Club no encontrado</h1>
+        <Link to="/clubs" className="text-blue-600 underline">
+          Volver a clubes
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-4xl mx-auto">
