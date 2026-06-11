@@ -1,42 +1,7 @@
+import { useReservations } from "../../context/ReservationContext";
+
 function Reservations() {
-  const reservations = [
-    {
-      id: 1,
-      user: "Juan Pérez",
-      sport: "Pádel",
-      date: "22/06/2026",
-      time: "20:00",
-      status: "Confirmada",
-      paymentStatus: "Pagada",
-    },
-    {
-      id: 2,
-      user: "María López",
-      sport: "Tenis",
-      date: "23/06/2026",
-      time: "18:00",
-      status: "Pendiente",
-      paymentStatus: "Pendiente",
-    },
-    {
-      id: 3,
-      user: "Carlos Gómez",
-      sport: "Fútbol",
-      date: "24/06/2026",
-      time: "21:00",
-      status: "Cancelada",
-      paymentStatus: "No aplica",
-    },
-    {
-      id: 4,
-      user: "Lucía Fernández",
-      sport: "Vóley",
-      date: "25/06/2026",
-      time: "19:00",
-      status: "Confirmada",
-      paymentStatus: "Pagada",
-    },
-  ];
+  const { reservations, cancelReservation } = useReservations();
 
   const totalReservations = reservations.length;
 
@@ -106,64 +71,82 @@ function Reservations() {
         </div>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="w-full bg-white text-black rounded-lg overflow-hidden">
-          <thead className="bg-slate-200">
-            <tr>
-              <th className="p-3 text-left">Usuario</th>
-              <th className="p-3 text-left">Deporte</th>
-              <th className="p-3 text-left">Fecha</th>
-              <th className="p-3 text-left">Hora</th>
-              <th className="p-3 text-left">Reserva</th>
-              <th className="p-3 text-left">Pago</th>
-              <th className="p-3 text-left">Acciones</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {reservations.map((reservation) => (
-              <tr key={reservation.id} className="border-b">
-                <td className="p-3">{reservation.user}</td>
-                <td className="p-3">{reservation.sport}</td>
-                <td className="p-3">{reservation.date}</td>
-                <td className="p-3">{reservation.time}</td>
-
-                <td className="p-3">
-                  <span
-                    className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusClass(
-                      reservation.status
-                    )}`}
-                  >
-                    {reservation.status}
-                  </span>
-                </td>
-
-                <td className="p-3">
-                  <span
-                    className={`px-3 py-1 rounded-full text-sm font-medium ${getPaymentClass(
-                      reservation.paymentStatus
-                    )}`}
-                  >
-                    {reservation.paymentStatus}
-                  </span>
-                </td>
-
-                <td className="p-3">
-                  <div className="flex gap-2">
-                    <button className="bg-slate-700 text-white px-3 py-1 rounded hover:bg-slate-800">
-                      Ver
-                    </button>
-
-                    <button className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
-                      Cancelar
-                    </button>
-                  </div>
-                </td>
+      {reservations.length === 0 ? (
+        <div className="bg-white text-slate-900 rounded-xl p-6 shadow">
+          <p className="text-slate-600">
+            Todavía no hay reservas registradas.
+          </p>
+        </div>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="w-full bg-white text-black rounded-lg overflow-hidden">
+            <thead className="bg-slate-200">
+              <tr>
+                <th className="p-3 text-left">Usuario</th>
+                <th className="p-3 text-left">Club</th>
+                <th className="p-3 text-left">Deporte</th>
+                <th className="p-3 text-left">Fecha</th>
+                <th className="p-3 text-left">Hora</th>
+                <th className="p-3 text-left">Reserva</th>
+                <th className="p-3 text-left">Pago</th>
+                <th className="p-3 text-left">Acciones</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+
+            <tbody>
+              {reservations.map((reservation) => (
+                <tr key={reservation.id} className="border-b">
+                  <td className="p-3">{reservation.user}</td>
+                  <td className="p-3">{reservation.club}</td>
+                  <td className="p-3">{reservation.sport}</td>
+                  <td className="p-3">{reservation.date}</td>
+                  <td className="p-3">{reservation.time}</td>
+
+                  <td className="p-3">
+                    <span
+                      className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusClass(
+                        reservation.status
+                      )}`}
+                    >
+                      {reservation.status}
+                    </span>
+                  </td>
+
+                  <td className="p-3">
+                    <span
+                      className={`px-3 py-1 rounded-full text-sm font-medium ${getPaymentClass(
+                        reservation.paymentStatus
+                      )}`}
+                    >
+                      {reservation.paymentStatus}
+                    </span>
+                  </td>
+
+                  <td className="p-3">
+                    <div className="flex gap-2">
+                      <button className="bg-slate-700 text-white px-3 py-1 rounded hover:bg-slate-800">
+                        Ver
+                      </button>
+
+                      <button
+                        onClick={() => cancelReservation(reservation.id)}
+                        disabled={reservation.status === "Cancelada"}
+                        className={`px-3 py-1 rounded text-white ${
+                          reservation.status === "Cancelada"
+                            ? "bg-slate-400 cursor-not-allowed"
+                            : "bg-red-500 hover:bg-red-600"
+                        }`}
+                      >
+                        Cancelar
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }
