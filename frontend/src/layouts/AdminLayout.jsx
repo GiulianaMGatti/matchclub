@@ -29,6 +29,13 @@ function AdminLayout() {
               Reservas
             </Link>
 
+            <Link
+              to="/admin/clubes"
+              className="hover:text-blue-400"
+            >
+              Clubes
+            </Link>
+
           </nav>
         </aside>
 
