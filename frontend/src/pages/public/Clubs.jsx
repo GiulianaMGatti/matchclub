@@ -13,9 +13,15 @@ function Clubs() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">Clubes disponibles</h1>
+      <h1 className="text-3xl font-bold text-slate-900 mb-2">
+        Clubes disponibles
+      </h1>
 
-      <div className="flex gap-4 flex-wrap">
+      <p className="text-slate-600 mb-8">
+        Elegí un club para consultar disciplinas y horarios disponibles.
+      </p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
         {clubs.map((club) => (
           <ClubCard
             key={club.id}
