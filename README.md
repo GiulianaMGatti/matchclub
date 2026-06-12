@@ -62,3 +62,76 @@ Para ingresar al panel administrativo:
 ```text
 Email: admin@matchclub.com
 Contraseña: 1234
+```
+
+---
+
+## Cómo ejecutar el proyecto
+
+### Backend
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+Servidor:
+
+```text
+http://localhost:3000
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Servidor:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## Estructura del proyecto
+
+```text
+matchclub/
+├── backend/
+├── frontend/
+├── docs/
+├── README.md
+└── .gitignore
+```
+
+---
+
+## Integrantes
+
+- Giuliana Mandrini Gatti
+- Martín Alejandro Romero
+
+---
+
+## Estado del proyecto
+
+Versión funcional orientada a frontend.
+
+Incluye:
+
+- React Router
+- Context API
+- Login mock
+- Rutas protegidas
+- Gestión de reservas
+- Persistencia mediante LocalStorage
+- Dashboard administrativo
+- Gestión de clubes
+- Identidad visual propia
+
+Proyecto desarrollado para Programación Web III (TUDAI).
