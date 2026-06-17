@@ -18,9 +18,10 @@ function ReservationProvider({ children }) {
   const addReservation = (reservationData) => {
     const newReservation = {
       id: Date.now(),
+      code: `MC-${Date.now()}`,
       user: "Administrador MatchClub",
-      sport: reservationData.sport,
       club: reservationData.club,
+      sport: reservationData.sport,
       date: reservationData.date,
       time: reservationData.time,
       status: "Pendiente",
@@ -32,6 +33,11 @@ function ReservationProvider({ children }) {
       ...prevReservations,
       newReservation,
     ]);
+
+    localStorage.setItem(
+      "matchclub_last_reservation",
+      JSON.stringify(newReservation)
+    );
   };
 
   const cancelReservation = (reservationId) => {
@@ -39,10 +45,10 @@ function ReservationProvider({ children }) {
       prevReservations.map((reservation) =>
         reservation.id === reservationId
           ? {
-              ...reservation,
-              status: "Cancelada",
-              paymentStatus: "No aplica",
-            }
+            ...reservation,
+            status: "Cancelada",
+            paymentStatus: "No aplica",
+          }
           : reservation
       )
     );
