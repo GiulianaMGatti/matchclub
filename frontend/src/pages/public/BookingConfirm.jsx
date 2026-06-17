@@ -103,9 +103,8 @@ function BookingConfirm() {
 
           <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4 mb-6">
             <p className="text-sm text-blue-700">
-              Recordá que esta reserva queda registrada como pendiente. En una
-              futura versión se podrá integrar el envío automático por email y
-              la gestión de pagos.
+              Tu reserva fue registrada correctamente.
+              Presentá este comprobante al momento de utilizar la instalación deportiva.
             </p>
           </div>
 
