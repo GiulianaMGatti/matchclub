@@ -53,6 +53,26 @@ function BookingConfirm() {
             </p>
           </div>
 
+          <div className="bg-slate-50 rounded-xl p-4">
+            <p className="text-sm text-slate-500">
+              Titular de la reserva
+            </p>
+
+            <p className="font-semibold text-slate-900">
+              {reservation.user}
+            </p>
+          </div>
+
+          <div className="bg-slate-50 rounded-xl p-4">
+            <p className="text-sm text-slate-500">
+              Email de contacto
+            </p>
+
+            <p className="font-semibold text-slate-900">
+              {reservation.email}
+            </p>
+          </div>
+
           <h2 className="text-xl font-bold text-slate-900 mb-4">
             Detalle del turno
           </h2>
@@ -102,9 +122,9 @@ function BookingConfirm() {
           </div>
 
           <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4 mb-6">
-            <p className="text-sm text-blue-700">
-              Tu reserva fue registrada correctamente.
-              Presentá este comprobante al momento de utilizar la instalación deportiva.
+            <p className="text-blue-700">
+              Tu comprobante quedó asociado al correo:
+              <strong> {reservation.email}</strong>
             </p>
           </div>
 

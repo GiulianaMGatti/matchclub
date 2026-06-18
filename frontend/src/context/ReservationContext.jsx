@@ -19,7 +19,8 @@ function ReservationProvider({ children }) {
     const newReservation = {
       id: Date.now(),
       code: `MC-${Date.now()}`,
-      user: "Administrador MatchClub",
+      user: reservationData.user,
+      email: reservationData.email,
       club: reservationData.club,
       sport: reservationData.sport,
       date: reservationData.date,
