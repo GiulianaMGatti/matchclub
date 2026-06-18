@@ -36,6 +36,8 @@ El objetivo del proyecto es simular una plataforma para la gestión y reserva de
 - Disciplinas disponibles por club.
 - Flujo de reserva de turno.
 - Confirmación de reserva.
+- Generación de comprobante de reserva.
+- Registro de nombre y email del usuario.
 
 ### Autenticación
 
@@ -52,6 +54,7 @@ El objetivo del proyecto es simular una plataforma para la gestión y reserva de
 - Gestión visual de clubes.
 - Sidebar administrativa.
 - Actualización dinámica de indicadores.
+- Visualización detallada de reservas desde el panel administrativo.
 
 ---
 
